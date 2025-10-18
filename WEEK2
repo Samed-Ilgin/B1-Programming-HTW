@@ -19,7 +19,7 @@ else: print("10 years ago you were not born .")
 
 
 
-//Password code didnt function like intended. Didnt know how to solve the problem.
+#Password code didnt function like intended. Didnt know how to solve the problem.
 
 import getpass
 
