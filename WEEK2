@@ -1,0 +1,43 @@
+name = input("Please enter your name:")
+age_input = input("Please enter your age:")
+
+if age_input.isdigit():
+    age = int(age_input)
+
+if age_input == "" :
+    print("Cannot be blank")
+else:
+    print("invalid age entered.")
+    
+past_age = age - 10
+
+if past_age > 0:
+    print(f"Hello {name}. 10 years ago you were {past_age}.")
+
+else: print("10 years ago you were not born .")
+
+
+
+
+//Password code didnt function like intended. Didnt know how to solve the problem.
+
+import getpass
+
+personal_password = "12Easy34"
+
+available_attempts = 3
+
+while available_attempts > 0:
+
+    password = input("Please Enter your password: ")
+    
+    if password == personal_password:
+     print ("Login Succesful")
+    break
+else: 
+    available_attempts -= 1
+    if available_attempts > "0":
+        print("Password incorrect. You have {available_attempts} attempt(s) left") 
+
+if available_attempts == 0:
+    print("Your attempts have run out, you might try again in 30 minutes")
