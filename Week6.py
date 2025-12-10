@@ -105,11 +105,9 @@ for score in scores:
 
 #Excercise 3
 
-expense_records = ()
+expense_records = []
 category_totals = {}
-unique_categories = []
-
-expense_records.append((category, amount, date))
+unique_categories = set()
 
 expenses = int(input("How many expenses do you have?: "))
 
@@ -117,7 +115,37 @@ for i in range(1, expenses + 1):
    print(f"\nExpense {i}:")
    
    category = input("Enter category: ")
-   amount = input("Enter amount: ")
-   date = input("Enter date (DD-MM-YYYY)")
+   amount = float(input("Enter amount: $ "))
+   date = input("Enter date (DD-MM-YYYY): ")
+   
+   expense_records.append((category, amount, date))
 
-print(f"\nAll expenses : {expense_records} ")
+for category, amount, date in expense_records:
+   
+   unique_categories.add(category)
+
+   if category not in category_totals: 
+      category_totals[category] = 0
+   category_totals[category] += amount
+
+
+amounts = [a for (_, a, _) in expense_records]
+
+total_spending = sum(amounts)
+average_expense = total_spending / len(amounts)
+highest_expense = max(amounts)
+lowest_expense = min(amounts)
+
+print("\n===All expenses===\n")
+print(expense_records)
+
+print("\n===Overall Spending Summary===\n")
+print(f"Total Spending: {total_spending} \nAverage Expense: {average_expense} \nHighest Expense:{highest_expense} \n Lowest Expense: {lowest_expense}")
+
+print("\n=== UNIQUE CATEGORIES SPENT ON ===\n")
+print(unique_categories)
+print(f"Total unique categories: {len(unique_categories)}")   
+
+print("\n=== SPENDING BY CATEGORY ===\n")
+for cat, total in category_totals.items():
+    print(f"{cat}: ${total:.2f}")
